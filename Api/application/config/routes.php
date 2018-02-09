@@ -75,6 +75,16 @@ $route['usuario']['post'] = 'usuario/index';
 $route['usuario/(:num)']['put'] = 'usuario/index/$1';
 $route['usuario/(:num)']['delete'] = 'usuario/index/$1';
 
+//Routes for Login
+
+$route['login']['get'] = 'login/index';
+$route['login/(:num)']['get'] = 'login/find/$1';
+$route['login']['post'] = 'login/index';
+$route['login/(:num)']['put'] = 'login/index/$1';
+$route['login/(:num)']['delete'] = 'login/index/$1';
+
+
+
 /*
 | -------------------------------------------------------------------------
 | Sample REST API Routes
