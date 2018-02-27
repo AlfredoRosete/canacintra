@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>bitapp</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"  ></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+ <!-- <script src="js/login.js"></script> -->
+   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <style type="text/css">
+    
+
+
+  html {
+    font-family: GillSans, Calibri, Trebuchet, sans-serif;
+  }
+        
+
+
+  </style>
+</head>
+<body>
+
+<nav class="white" >
+    <div class="nav-wrapper">
+      <a href="#!" class="brand-logo"> <img src="img/logo-bitapp.png" alt="" width="95%" height="10%" > </a>
+      <a href="#" data-activates="mobile-demo" class="button-collapse "><i class="material-icons grey-text text-darken-2 ">menu</i></a>
+
+      <ul class="right hide-on-med-and-down">
+              <a href="#!" class="brand-logo"> <img src="img/logo-bitapp.png" alt="" width="95%" height="10%" > </a>
+
+
+        <li><a href="pendientes.html">  Pendiente en proceso</a></li>
+      </ul>
+      <ul class="side-nav" id="mobile-demo">
+        
+        <a href="#!" class="brand-logo"> <img src="img/logo-bitapp.png" alt="" width="100%" height="10%" > </a>
+          <br>  
+          <hr>      
+        <li><a href="pendientes.html"> <i class="material-icons">description</i> Pendiente en proceso</a></li>
+        <li><a href="bitacora.html"> <i class="material-icons">note_add</i> Agregar Actividad</a></li>
+        <li><a href="configuracion.html"> <i class="material-icons">settings_applications</i> Configuracion</a></li>
+      </ul>
+    </div>
+  </nav>
+          
+
+    <div class="container">
+
+
+<form >
+ <div class="container">  
+<!--
+  <div>
+    <h5 class="left-align">Registra tu actidad  la hora de inicio de la actividad sera tomada automaticamante</h5>
+  </div>
+-->
+
+  <div class="collection">
+    <a href="#!" class="collection-item">
+      Registra tu actividad  la hora de inicio de la actividad sera tomada automaticamante</a>
+   <!-- <a href="pendientes.html" class="collection-item"><span class="new badge">4</span>Pendientes sin finalizar</a>
+
+   -->
+
+  </div>
+            
+
+   <br>
+<hr>  
+<center>
+<span id="liveclock" style=""></span>
+</center>
+<hr>
+ <table>
+        <thead>
+          <tr>
+              <th  id="hora" ></th>
+              <th id="minuto" ></th>
+              <th id="segundo"></th>
+          </tr>
+        </thead>
+
+        <div id="reloj" > </div>
+      </table>
+      
+
+
+ 
+        
+  <div class="input-field">
+    <div class="form-group" >
+      <label class="control-label" for=""> Actividad </label>
+      <span class="help-block"></span>
+      <input type="text" class="form-control" id="Actividad" placeholder="Ejemplo: Junta para revision de actividades">
+    </div>
+  </div>
+
+
+
+
+
+  <div>
+  
+  <a id="btn-guardar" class="btn   blue darken-4 ">Registrar</a>
+</form>
+
+
+
+      </div>
+
+
+
+<script>
+
+ $( document ).ready(function(){
+
+    $(".button-collapse").sideNav();
+ });
+
+
+   $(document).ready(function(){    
+    $('#btn-guardar').click(function(){  
+
+  
+  
+  var ok = true;
+  var msg = "Debes escribir algo en los campos:\n";
+  if($("#actividad").val() == "")
+  {
+    msg += " Nombre Completo\n";
+    ok = false;
+  }
+
+
+  if(ok == false)
+  {
+    alert(msg);
+  
+  }
+  else
+  {
+      var actividad = $("#actividad").val();
+
+    sessionStorage.setItem("actividad", actividad);
+
+$(location).attr('href','bitacora.html');
+
+  }
+    
+
+    });   
+
+});
+
+
+
+
+ $( document ).ready(function(){
+
+    $(".button-collapse").sideNav();
+ });
+
+
+
+ function show5(){
+        if (!document.layers&&!document.all&&!document.getElementById)
+        return
+
+         var Digital=new Date()
+         var hours=Digital.getHours()
+         var minutes=Digital.getMinutes()
+         var seconds=Digital.getSeconds()
+
+        var dn="PM"
+        if (hours<12)
+        dn="AM"
+        if (hours>12)
+        hours=hours-12
+        if (hours==0)
+        hours=12
+
+         if (minutes<=9)
+         minutes="0"+minutes
+         if (seconds<=9)
+         seconds="0"+seconds
+        //change font size here to your desire
+        myclock="<font size='5' face='Arial' ><b><font size='1'>Hora actual:</font></br>"+hours+":"+minutes+":"
+         +seconds+" "+dn+"</b></font>"
+        if (document.layers){
+        document.layers.liveclock.document.write(myclock)
+        document.layers.liveclock.document.close()
+        }
+        else if (document.all)
+        liveclock.innerHTML=myclock
+        else if (document.getElementById)
+        document.getElementById("liveclock").innerHTML=myclock
+        setTimeout("show5()",1000)
+         }
+
+
+        window.onload=show5
+         //-->
+
+
+
+
+
+
+ $( document ).ready(function() {
+
+
+
+
+      $('#btn-ingresar').click(function(){
+
+        var Digital=new Date()
+        var hours=Digital.getHours()
+        var minutes=Digital.getMinutes()
+        var seconds=Digital.getSeconds()
+
+        var dn="PM"
+        if (hours<12)
+        dn="AM"
+        if (hours>12)
+        hours=hours-12
+        if (hours==0)
+        hours=12
+
+         if (minutes<=9)
+         minutes="0"+minutes
+         if (seconds<=9)
+         seconds="0"+seconds
+         //change font size here to your desire
+         myclock="</br>"+hours+":"+minutes+":"
+         +seconds+" "+dn+"</b>"
+
+        document.getElementById("reloj").innerHTML=myclock
+
+
+        var url = "datos_login.php";                                      
+
+
+                $.ajax({
+                type: "POST",
+                url:url,
+                data:{correo:correo ,nombre:nombre,compania:compania,telefono:telefono,correo:correo,mensaje:mensaje},
+                success: function(datos){
+                    //$('#tabla').html(datos);
+                    alert("Tu mensaje ha sido enviado con exito");
+                }
+            });
+
+
+      });
+    });
+
+
+
+</script>
+
+</body>
+</html>

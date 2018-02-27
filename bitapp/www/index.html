@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>bitapp</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"  ></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+ <!-- <script src="js/login.js"></script> -->
+  <style type="text/css">
+  	
+
+
+  html {
+    font-family: GillSans, Calibri, Trebuchet, sans-serif;
+  }
+        
+
+
+  </style>
+</head>
+<body>
+
+
+
+
+    <div class="container">
+
+
+<form >
+ <div class="container">	
+
+ <center> 
+		<img style="padding-top: 10%; padding-bottom: 5%;"  src="img/logo-bitapp.png"> 
+</center>
+
+            
+    <p class="flow-text">Favor de llenar todos los campos</p>
+
+<br>	
+
+
+	<div class="input-field">
+		<div class="form-group" >
+			<label class="control-label" for="">Empresa</label>
+			<span class="help-block"></span>
+			<input type="text" class="form-control" id="empresa" placeholder="Ejemplo: Canacintra USA">
+		</div>
+	</div>
+
+
+	<div class="input-field"> 
+		<div class="form-group">
+			<label class="control-label" for="">Nombre Completo</label>
+			<span class="help-block"></span>
+			<input type="text" class="form-control" id="nombre_completo" placeholder="Ejemplo: Juanito perez perez">
+		</div>
+	</div>
+
+
+	<div class="input-field">
+		<div class="form-group" >
+			
+			<label class="control-label" for="">Detartamento</label>
+			<span class="help-block"></span>
+			<input type="text" class="form-control" id="departamento" placeholder="Ejemplo: ecommerce">
+      <input type="hidden" id="status" value="A" name="">
+		</div>
+	</div>
+
+
+
+
+
+	<div>
+	
+	<a id="btn-guardar" class="btn   blue darken-4 ">Enviar</a>
+</form>
+
+
+
+      </div>
+
+
+
+<script>
+	 $(document).ready(function(){    
+    $('#btn-guardar').click(function(){  
+
+	
+	
+  var ok = true;
+  var msg = "Debes escribir algo en los campos:\n";
+  if($("#nombre_completo").val() == "")
+  {
+    msg += " Nombre Completo\n";
+    ok = false;
+  }
+
+  if($("#departamento").val() == "")
+  {
+    msg += " Detartamento\n";
+    ok = false;
+  }
+
+  if($("#empresa").val() == "")
+  {
+    msg += " Empresa\n";
+    ok = false;
+  }
+
+  if(ok == false)
+  {
+  	alert(msg);
+  
+  }
+  else
+  {
+  
+
+  	//	var nombre_completo	= $("#nombre_completo").val();
+  	//	var departamento = 	$("#departamento").val();
+  	//	var  empresa = $("#empresa").val();
+
+		 //  localStorage.setItem("nombre_completo", nombre_completo);
+      //  localStorage.setItem("departamento", departamento);
+     //   localStorage.setItem("empresa", empresa);
+    
+ addWine();
+
+function addWine() {
+    console.log('addWine');
+  
+
+   var empresa = $('#empresa').val();
+   var nombre_completo = $('#nombre_completo').val();
+   var departamento = $('#departamento').val();
+   var status = $('#status').val();
+
+ var parametros = {
+                "empresa" : empresa,
+                "nombre_completo" : nombre_completo,
+                "departamento" : departamento,
+                "status" : status
+
+        };
+ var url ="https://canacintrausa.us/Api_bitapp/usuario";
+   alert(parametros);
+    $.ajax({
+        type: 'POST',
+        contentType: 'application/json',
+        url: url,
+        dataType: 'json',
+        data: {empresa:empresa,nombre_completo:nombre_completo,departamento:departamento,status:status},
+        success: function(data, textStatus, jqXHR){
+            alert('Wine created successfully');
+           },
+        error: function(jqXHR, textStatus, errorThrown){
+            alert('addWine error: ' + textStatus);
+        }
+    });
+}
+
+ 
+// Helper function to serialize all the form fields into a JSON string
+function formToJSON() {
+    return 
+}
+
+
+     //var url ="https://canacintrausa.us/Api_bitapp/usuario";
+     //var status = "A";
+       //         $.ajax({
+        //        type: "post",
+        //        url:url,
+        //        data:{nombre_completo:nombre_completo ,departamento:departamento,empresa:empresa,status:status},
+//contentType: "application/json; charset=utf-8",
+   //     dataType: "json",
+       //         success: function(datos){
+                    //$('#tabla').html(datos);
+           //         alert("Tu mensaje ha sido enviado con exito");
+            //    }
+          //});
+
+
+
+
+//$(location).attr('href','bitacora.html');
+
+  }
+    
+
+    });   
+
+});
+</script>
+
+</body>
+</html>

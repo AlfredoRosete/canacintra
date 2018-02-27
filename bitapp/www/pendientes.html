@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>bitapp</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"  ></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+ <!-- <script src="js/login.js"></script> -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <style type="text/css">
+    
+.hora 
+{
+  font-weight: 300;
+    font-size: 0.8rem;
+    color: #fff;
+    background-color: #0089ec;
+    border-radius: 2px;     padding: 0.9%;
+
+}
+
+.hora_fin
+{
+  font-weight: 300;
+    font-size: 0.8rem;
+    color: #fff;
+    background-color: #B71C1C;
+    border-radius: 2px;     padding: 0.9%;
+
+}
+
+
+  html {
+    font-family: GillSans, Calibri, Trebuchet, sans-serif;
+  }
+        
+
+
+  </style>
+</head>
+<body >
+<nav class="white" >
+    <div class="nav-wrapper">
+      <a href="#!" class="brand-logo"> <img src="img/logo-bitapp.png" alt="" width="95%" height="10%" > </a>
+      <a href="#" data-activates="mobile-demo" class="button-collapse "><i class="material-icons grey-text text-darken-2 ">menu</i></a>
+
+      <ul class="right hide-on-med-and-down">
+              <a href="#!" class="brand-logo"> <img src="img/logo-bitapp.png" alt="" width="95%" height="10%" > </a>
+
+
+        <li><a href="pendientes.html">  Pendiente en proceso</a></li>
+      </ul>
+      <ul class="side-nav" id="mobile-demo">
+        
+        <a href="#!" class="brand-logo"> <img src="img/logo-bitapp.png" alt="" width="100%" height="10%" > </a>
+          <br>  
+          <hr>      
+        <li><a href="pendientes.html"> <i class="material-icons">description</i> Pendiente en proceso</a></li>
+        <li><a href="bitacora.html"> <i class="material-icons">note_add</i> Agregar Actividad</a></li>
+        <li><a href="configuracion.html"> <i class="material-icons">settings_applications</i> Configuracion</a></li>
+      </ul>
+    </div>
+  </nav>
+          
+
+    <div class="container">
+
+
+ <div class="container">  
+
+
+  <div>
+    <h5 class="left-align">Lista de pendientes en proceso </h5>
+  </div>
+<button onclick="myFunction()">Try it</button>
+
+<p id="demo"></p>
+
+
+ <table>
+        <thead>
+          <tr>
+              <th  id="hora" ></th>
+              <th id="minuto" ></th>
+              <th id="segundo"></th>
+          </tr>
+        </thead>
+      </table>
+      
+
+
+<table>
+        <thead>
+          <tr>
+              <th>Actividad</th>
+              <th> Hora de  Inicio</th>
+              <th>Hora de Fin </th>
+              <th >Estado </th>
+
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td >       
+
+
+
+
+
+ <span class="black-text">
+  <span class="default-title">ServInt</span>
+
+
+                This is a square image. Add the "circle" class to it to make it appear circular.
+                This is a square image. Add the "circle" class to it to make it appear circular.
+                This is a square image. Add the "circle" class to it to make it appear circular.
+              </span>
+</td>
+            <td><span class="hora" >8:30 AM</span></td>
+            <td>$0.87</td>
+            <td>proceso</td>
+          </tr>
+
+     
+        </tbody>
+      </table>
+
+      </div>
+
+
+
+
+
+<div id="Actividad" ></div>
+<div id="hora_inicio"></div>
+<div id="hora_fin"></div>
+<div id="status" ></div>
+
+
+
+<script language="JavaScript">
+
+
+
+
+ $( document ).ready(function(){
+
+    $(".button-collapse").sideNav();
+ });
+
+
+
+
+var Actividad = ["Registro de cuenta en facebook"];
+
+var hora_inicio = ["23:32"];
+
+var hora_fin = ["1:12"];
+
+var estado = ["Ps"];
+
+
+
+// Se guarda en localStorage despues de JSON stringificarlo 
+localStorage.setItem('Actividad', JSON.stringify(Actividad));
+localStorage.setItem('hora_inicio', JSON.stringify(hora_inicio));
+localStorage.setItem('hora_fin', JSON.stringify(hora_fin));
+localStorage.setItem('estado', JSON.stringify(estado));
+
+// Obtener el arreglo de localStorage
+
+var Actividad_L = localStorage.getItem('Actividad');
+var hora_inicio_L = localStorage.getItem('hora_inicio');
+var hora_fin_L= localStorage.getItem('hora_fin');
+var estado_L= localStorage.getItem('estado');
+var status_L= localStorage.getItem('status');
+
+// Se parsea para poder ser usado en js con JSON.parse :)
+Actividad_N = JSON.parse(Actividad_L);
+hora_inicio_N = JSON.parse(hora_inicio_L);
+hora_fin_N = JSON.parse(hora_fin_L);
+estado_N = JSON.parse(estado_L);
+status_N = JSON.parse(status_L);
+
+document.getElementById("Actividad").innerHTML = Actividad_N;
+document.getElementById("hora_inicio").innerHTML = hora_inicio_N;
+document.getElementById("hora_fin").innerHTML = hora_fin_N;
+document.getElementById("hora_fins").innerHTML = estado_N;
+document.getElementById("status").innerHTML = status_N;
+
+
+
+
+function myFunction() {
+    Actividad.push('Registro de Actividades');
+    hora_inicio.push('10:40');
+    hora_fin.push('8:30');
+
+
+
+
+
+
+
+   document.getElementById("Actividad").innerHTML = Actividad;
+document.getElementById("hora_inicio").innerHTML = hora_inicio;
+document.getElementById("hora_fin").innerHTML = hora_fin;
+document.getElementById("status").innerHTML = estado;
+
+localStorage.setItem('Actividad', JSON.stringify(Actividad));
+localStorage.setItem('hora_inicio', JSON.stringify(hora_inicio));
+localStorage.setItem('hora_fin', JSON.stringify(hora_fin));
+localStorage.setItem('status', JSON.stringify(estado));
+
+
+var Actividad_L = localStorage.getItem('Actividad');
+var hora_inicio_L = localStorage.getItem('hora_inicio');
+var hora_fin_L= localStorage.getItem('hora_fin');
+var estado= localStorage.getItem('status');
+
+
+
+}
+
+
+
+
+</script>
+
+</body>
+</html>

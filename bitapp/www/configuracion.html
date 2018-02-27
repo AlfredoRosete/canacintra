@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>bitapp</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"  ></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+ <!-- <script src="js/login.js"></script> -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <style type="text/css">
+    
+.hora 
+{
+  font-weight: 300;
+    font-size: 0.8rem;
+    color: #fff;
+    background-color: #0089ec;
+    border-radius: 2px;     padding: 0.9%;
+
+}
+
+.hora_fin
+{
+  font-weight: 300;
+    font-size: 0.8rem;
+    color: #fff;
+    background-color: #B71C1C;
+    border-radius: 2px;     padding: 0.9%;
+
+}
+
+
+  html {
+    font-family: GillSans, Calibri, Trebuchet, sans-serif;
+  }
+        
+
+
+  </style>
+</head>
+<body >
+
+ <nav class="white" >
+    <div class="nav-wrapper">
+      <a href="#!" class="brand-logo"> <img src="img/logo-bitapp.png" alt="" width="95%" height="10%" > </a>
+      <a href="#" data-activates="mobile-demo" class="button-collapse "><i class="material-icons grey-text text-darken-2 ">menu</i></a>
+
+      <ul class="right hide-on-med-and-down">
+              <a href="#!" class="brand-logo"> <img src="img/logo-bitapp.png" alt="" width="95%" height="10%" > </a>
+
+
+        <li><a href="pendientes.html">  Pendiente en proceso</a></li>
+      </ul>
+      <ul class="side-nav" id="mobile-demo">
+        
+        <a href="#!" class="brand-logo"> <img src="img/logo-bitapp.png" alt="" width="100%" height="10%" > </a>
+          <br>  
+          <hr>      
+        <li><a href="pendientes.html"> <i class="material-icons">description</i> Pendiente en proceso</a></li>
+        <li><a href="bitacora.html"> <i class="material-icons">note_add</i> Agregar Actividad</a></li>
+        <li><a href="configuracion.html"> <i class="material-icons">settings_applications</i> Configuracion</a></li>
+      </ul>
+    </div>
+  </nav>
+          
+
+<div class="container">
+  
+
+   <h3 class="center-align">Datos de configuracion</h3>
+
+</div>
+
+
+
+    <div class="card horizontal">
+      <div class="card-stacked">
+        <div class="card-content">
+
+           
+
+             <form >
+          <div class="input-field">
+            <i class="material-icons prefix">perm_identity</i>
+            <label for="nombre_completo">Nombre Completo</label>
+            <input type="text" id="nombre_completo"  name="Nombre Completo" >
+          </div>
+
+          <div class="input-field">
+            <i class="material-icons prefix">domain</i>
+            <label for="departamento">Departamento</label>
+            <input type="text" id="departamento" name="Departamento" >
+          </div>
+          
+
+
+
+          <div class="input-field">
+            <i class="material-icons prefix">location_city</i>
+            <label for="empresa">Empresa</label>
+            <input type="text" id="empresa" name="empresa" >
+          </div>
+
+
+
+          
+
+
+
+          <p class="center-align">
+            <a. id ="btn-actualizar" class="waves-effect waves-light btn" ><i class="material-icons right">send</i>ACTUALIZAR</a>
+          </p>
+
+        </form>
+        </div>
+      </div>
+    </div>
+
+
+
+
+<script language="JavaScript">
+ 
+
+
+
+ $( document ).ready(function(){
+      
+      //CAPTURA DE DATOS DE LOCALSTORANGE
+      var departamento = localStorage.getItem("departamento");
+      var empresa = localStorage.getItem("empresa");
+      var nombre_completo = localStorage.getItem("nombre_completo");
+
+      // SE MUESTRAN LOS DATOS DEL LOCALSTORANGE EN LOS INPUTS
+      $("#departamento").val(departamento);
+      $("#empresa").val(empresa);
+      $("#nombre_completo").val(nombre_completo);
+
+
+
+          $('#btn-actualizar').click(function(){  
+
+  
+  
+  var ok = true;
+  var msg = "Debes escribir algo en los campos:\n";
+  if($("#nombre_completo").val() == "")
+  {
+    msg += " Nombre Completo\n";
+    ok = false;
+  }
+
+  if($("#departamento").val() == "")
+  {
+    msg += " Detartamento\n";
+    ok = false;
+  }
+
+  if($("#empresa").val() == "")
+  {
+    msg += " Empresa\n";
+    ok = false;
+  }
+
+  if(ok == false)
+  {
+    alert(msg);
+  
+  }
+  else
+  {
+      
+        var nombre_completo = $("#nombre_completo").val();
+      var departamento =  $("#departamento").val();
+      var  empresa = $("#empresa").val();
+
+    localStorage.setItem("nombre_completo", nombre_completo);
+        localStorage.setItem("departamento", departamento);
+        localStorage.setItem("empresa", empresa);
+
+$(location).attr('href','configuracion.html');
+
+   var hours=Digital.getHours()
+         var minutes=Digital.getMinutes()
+         var seconds=Digital.getSeconds()
+
+  }
+    
+
+    }); 
+
+
+
+
+      // SCRIPT DE MENU LATERAL
+      $(".button-collapse").sideNav();
+ });
+
+</script>
+
+</body>
+</html>

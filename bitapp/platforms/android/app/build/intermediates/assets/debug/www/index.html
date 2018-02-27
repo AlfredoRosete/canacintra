@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>bitapp</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"  ></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+ <!-- <script src="js/login.js"></script> -->
+  <style type="text/css">
+  	
+
+
+  html {
+    font-family: GillSans, Calibri, Trebuchet, sans-serif;
+  }
+        
+
+
+  </style>
+</head>
+<body>
+
+
+
+
+    <div class="container">
+
+
+<form >
+ <div class="container">	
+
+ <center> 
+		<img style="padding-top: 10%; padding-bottom: 5%;"  src="img/logo-bitapp.png"> 
+</center>
+
+            
+    <p class="flow-text">Favor de llenar todos los campos</p>
+
+<br>	
+
+
+	<div class="input-field">
+		<div class="form-group" >
+			<label class="control-label" for="">Empresa</label>
+			<span class="help-block"></span>
+			<input type="text" class="form-control" id="empresa" placeholder="Ejemplo: Canacintra USA">
+		</div>
+	</div>
+
+
+	<div class="input-field"> 
+		<div class="form-group">
+			<label class="control-label" for="">Nombre Completo</label>
+			<span class="help-block"></span>
+			<input type="text" class="form-control" id="nombre_completo" placeholder="Ejemplo: Juanito perez perez">
+		</div>
+	</div>
+
+
+	<div class="input-field">
+		<div class="form-group" >
+			
+			<label class="control-label" for="">Detartamento</label>
+			<span class="help-block"></span>
+			<input type="text" class="form-control" id="departamento" placeholder="Ejemplo: ecommerce">
+		</div>
+	</div>
+
+
+
+
+
+	<div>
+	
+	<a id="btn-guardar" class="btn   blue darken-4 ">Enviar</a>
+</form>
+
+
+
+      </div>
+
+
+
+<script>
+	 $(document).ready(function(){    
+    $('#btn-guardar').click(function(){  
+
+	
+	
+  var ok = true;
+  var msg = "Debes escribir algo en los campos:\n";
+  if($("#nombre_completo").val() == "")
+  {
+    msg += " Nombre Completo\n";
+    ok = false;
+  }
+
+  if($("#departamento").val() == "")
+  {
+    msg += " Detartamento\n";
+    ok = false;
+  }
+
+  if($("#empresa").val() == "")
+  {
+    msg += " Empresa\n";
+    ok = false;
+  }
+
+  if(ok == false)
+  {
+  	alert(msg);
+  
+  }
+  else
+  {
+  		var nombre_completo	= $("#nombre_completo").val();
+  		var departamento = 	$("#departamento").val();
+  		var  empresa = $("#empresa").val();
+
+		sessionStorage.setItem("nombre_completo", nombre_completo);
+        sessionStorage.setItem("departamento", departamento);
+        sessionStorage.setItem("empresa", empresa);
+    
+
+$(location).attr('href','bitacora.html');
+
+  }
+    
+
+    });   
+
+});
+</script>
+
+</body>
+</html>
