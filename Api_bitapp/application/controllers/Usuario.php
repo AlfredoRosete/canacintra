@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
+header('Access-Control-Allow-Origin: *');
 require_once APPPATH . '/libraries/REST_Controller.php';
 
 
@@ -40,8 +40,14 @@ class usuario extends REST_Controller
     public function index_post()
     {
 
+   $login  = $this->usuario_model->save($_POST['empresa'] ,$_POST['nombre_completo'] ,$_POST['departamento'],$_POST['telefono'] ,$_POST['status'] );
 
-        $id = $this->usuario_model->save($_POST['empresa'] ,$_POST['nombre_completo'] ,$_POST['departamento'] ,$_POST['status'] );
+         if (!is_null($login)) {
+            $this->response(array('response' => $login), 200);
+        } else {
+            $this->response(array('error' => 'El usuario no se encuentra registrado...'));
+    }
+
 
 
     }

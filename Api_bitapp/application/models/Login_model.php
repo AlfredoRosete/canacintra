@@ -12,10 +12,10 @@ class Login_model extends CI_Model
     {
         if ($telefono) {
           
-            $query = $this->db->query('select* from usuario where telefono_usuario='.$telefono);
+            $query = $this->db->query('select* from usuarios where telefono='.$telefono);
 
             if ($query->num_rows() > 0) {
-                return $query->result_array();
+                return $query->result_array(); 
             }
 
             return null;

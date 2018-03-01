@@ -41,36 +41,13 @@
 <br>	
 
 
-	<div class="input-field">
-		<div class="form-group" >
-			<label class="control-label" for="">Empresa</label>
-			<span class="help-block"></span>
-			<input type="text" class="form-control" id="empresa" placeholder="Ejemplo: Canacintra USA">
-		</div>
-	</div>
-
-
-	<div class="input-field"> 
-		<div class="form-group">
-			<label class="control-label" for="">Nombre Completo</label>
-			<span class="help-block"></span>
-			<input type="text" class="form-control" id="nombre_completo" placeholder="Ejemplo: Juanito perez perez">
-		</div>
-	</div>
-
-
-	<div class="input-field">
-		<div class="form-group" >
-			
-			<label class="control-label" for="">Detartamento</label>
-			<span class="help-block"></span>
-			<input type="text" class="form-control" id="departamento" placeholder="Ejemplo: ecommerce">
-      <input type="hidden" id="status" value="A" name="">
-		</div>
-	</div>
-
-
-
+  <div class="input-field">
+    <div class="form-group" >
+      <label class="control-label" for="">Telefono</label>
+      <span class="help-block"></span>
+      <input type="number" class="form-control" id="telefono" placeholder="Ejemplo: 2721286588">
+    </div>
+  </div>
 
 
 	<div>
@@ -94,21 +71,10 @@
   var msg = "Debes escribir algo en los campos:\n";
   if($("#nombre_completo").val() == "")
   {
-    msg += " Nombre Completo\n";
+    msg += "Telefono\n";
     ok = false;
   }
 
-  if($("#departamento").val() == "")
-  {
-    msg += " Detartamento\n";
-    ok = false;
-  }
-
-  if($("#empresa").val() == "")
-  {
-    msg += " Empresa\n";
-    ok = false;
-  }
 
   if(ok == false)
   {
@@ -118,75 +84,33 @@
   else
   {
   
+  
+var telefono = document.getElementById("telefono").value;
 
-  	//	var nombre_completo	= $("#nombre_completo").val();
-  	//	var departamento = 	$("#departamento").val();
-  	//	var  empresa = $("#empresa").val();
+ var url ="https://canacintrausa.us/Api_bitapp/login/index";
+                                  
 
-		 //  localStorage.setItem("nombre_completo", nombre_completo);
-      //  localStorage.setItem("departamento", departamento);
-     //   localStorage.setItem("empresa", empresa);
-    
- addWine();
 
-function addWine() {
-    console.log('addWine');
+
+        $.ajax({                        
+           type: "POST",                 
+           url: url,                    
+           data: {telefono:telefono},
+           success: function(data)            
+           {
+
+           var datos = JSON.stringify(data);
+
+           var valorCodigo = datos.getString("error");
+                       alert(valorCodigo);
+
+             console.log(valorCodigo); 
+
+
+           }
+         });
   
 
-   var empresa = $('#empresa').val();
-   var nombre_completo = $('#nombre_completo').val();
-   var departamento = $('#departamento').val();
-   var status = $('#status').val();
-
- var parametros = {
-                "empresa" : empresa,
-                "nombre_completo" : nombre_completo,
-                "departamento" : departamento,
-                "status" : status
-
-        };
- var url ="https://canacintrausa.us/Api_bitapp/usuario";
-   alert(parametros);
-    $.ajax({
-        type: 'POST',
-        contentType: 'application/json',
-        url: url,
-        dataType: 'json',
-        data: {empresa:empresa,nombre_completo:nombre_completo,departamento:departamento,status:status},
-        success: function(data, textStatus, jqXHR){
-            alert('Wine created successfully');
-           },
-        error: function(jqXHR, textStatus, errorThrown){
-            alert('addWine error: ' + textStatus);
-        }
-    });
-}
-
- 
-// Helper function to serialize all the form fields into a JSON string
-function formToJSON() {
-    return 
-}
-
-
-     //var url ="https://canacintrausa.us/Api_bitapp/usuario";
-     //var status = "A";
-       //         $.ajax({
-        //        type: "post",
-        //        url:url,
-        //        data:{nombre_completo:nombre_completo ,departamento:departamento,empresa:empresa,status:status},
-//contentType: "application/json; charset=utf-8",
-   //     dataType: "json",
-       //         success: function(datos){
-                    //$('#tabla').html(datos);
-           //         alert("Tu mensaje ha sido enviado con exito");
-            //    }
-          //});
-
-
-
-
-//$(location).attr('href','bitacora.html');
 
   }
     

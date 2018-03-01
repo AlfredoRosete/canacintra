@@ -27,11 +27,12 @@ class Usuario_model extends CI_Model
         return null;
     }
 
-    public function save($empresa,$nombre_completo,$departamento,$status)
+    public function save($empresa,$nombre_completo,$departamento,$telefono,$status)
     {
-            $query = $this->db->query("INSERT INTO usuarios (nombre_completo, empresa, departamento, status)
-VALUES ( '".$nombre_completo."' ,'".$empresa."', '".$departamento."', '".$status."')");
 
+        
+            $query = $this->db->query("INSERT INTO usuarios (nombre_completo, empresa, departamento,telefono, status)
+VALUES ( '".$nombre_completo."' ,'".$empresa."', '".$departamento."', '".$telefono."', '".$status."')");
 
          if (!is_null($query)) {
             $this->response(array('response' => $query), 200);
