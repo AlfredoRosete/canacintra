@@ -36,14 +36,14 @@
 </center>
 
             
-    <p class="flow-text">Favor de llenar todos los campos</p>
+    <p class="flow-text">Favor de llenar el campo numero de celular</p>
 
 <br>	
 
 
   <div class="input-field">
     <div class="form-group" >
-      <label class="control-label" for="">Telefono</label>
+      <label class="control-label" for="">Celular</label>
       <span class="help-block"></span>
       <input type="number" class="form-control" id="telefono" placeholder="Ejemplo: 2721286588">
     </div>
@@ -55,6 +55,7 @@
 	<a id="btn-guardar" class="btn   blue darken-4 ">Enviar</a>
 </form>
 
+          <div class="carousel-inner text-center" id="noticia"> 
 
 
       </div>
@@ -62,14 +63,27 @@
 
 
 <script>
-	 $(document).ready(function(){    
+	 $(document).ready(function(){   
+
+if (localStorage.getItem("Telefono")==null) {
+
+
+ 
+}
+
+else
+{
+       alert("entras directo");
+      window.location.href = "bitacora.html";
+
+} 
     $('#btn-guardar').click(function(){  
 
 	
 	
   var ok = true;
   var msg = "Debes escribir algo en los campos:\n";
-  if($("#nombre_completo").val() == "")
+  if($("#telefono").val() == "")
   {
     msg += "Telefono\n";
     ok = false;
@@ -87,6 +101,8 @@
   
 var telefono = document.getElementById("telefono").value;
 
+
+
  var url ="https://canacintrausa.us/Api_bitapp/login/index";
                                   
 
@@ -99,17 +115,62 @@ var telefono = document.getElementById("telefono").value;
            success: function(data)            
            {
 
-           var datos = JSON.stringify(data);
-
-           var valorCodigo = datos.getString("error");
-                       alert(valorCodigo);
-
-             console.log(valorCodigo); 
 
 
-           }
+
+
+
+            if (data.error == "El usuario no se encuentra registrado.") {
+
+       
+             alert(data.error);
+             window.location.href = "validacion.html";
+
+
+            }
+            else
+            {
+
+            var id_usuario = [];
+            var nombre_completo = [];
+            var empresa  = [];
+            var departamento  = [];
+            var telefono = [];
+
+            $.each(data, function(i, item) {
+                id_usuario =  item[0].id_usuario
+                nombre_completo =  item[0].nombre_completo
+                empresa =  item[0].empresa
+                departamento =  item[0].departamento
+                telefono =  item[0].telefono
+
+
+            });
+
+            localStorage.setItem("id_usuario", id_usuario);
+            localStorage.setItem("nombre_completo", nombre_completo);
+            localStorage.setItem("empresa", empresa);
+            localStorage.setItem("departamento", departamento);
+            localStorage.setItem("Telefono", telefono);
+
+            window.location.href = "bitacora.html";
+
+
+            }
+
+
+
+
+           },
+    error: function(data){
+
+       window.location.href = "validacion.html";
+
+    }
+
+
+
          });
-  
 
 
   }

@@ -18,7 +18,7 @@ class Login extends REST_Controller
          if (!is_null($login)) {
             $this->response(array('response' => $login), 200);
         } else {
-            $this->response(array('error' => 'El usuario no se encuentra registrado...'));
+            $this->response(array('error' => 'El usuario no se encuentra registrado.'));
     }
 
     

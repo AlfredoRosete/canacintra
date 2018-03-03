@@ -83,6 +83,14 @@
            
 
              <form >
+
+          <div class="input-field">
+            <i class="material-icons prefix">perm_identity</i>
+            <label for="nombre_completo">Telefono</label>
+            <input type="text" id="telefono"  name="Nombre Completo" >
+          </div>
+
+
           <div class="input-field">
             <i class="material-icons prefix">perm_identity</i>
             <label for="nombre_completo">Nombre Completo</label>
@@ -133,11 +141,13 @@
       var departamento = localStorage.getItem("departamento");
       var empresa = localStorage.getItem("empresa");
       var nombre_completo = localStorage.getItem("nombre_completo");
+      var telefono = localStorage.getItem("Telefono");
 
       // SE MUESTRAN LOS DATOS DEL LOCALSTORANGE EN LOS INPUTS
       $("#departamento").val(departamento);
       $("#empresa").val(empresa);
       $("#nombre_completo").val(nombre_completo);
+      $("#telefono").val(telefono);
 
 
 
@@ -159,6 +169,15 @@
     ok = false;
   }
 
+
+  if($("#telefono").val() == "")
+  {
+    msg += " Telefono\n";
+    ok = false;
+  }
+
+
+
   if($("#empresa").val() == "")
   {
     msg += " Empresa\n";
@@ -176,10 +195,12 @@
         var nombre_completo = $("#nombre_completo").val();
       var departamento =  $("#departamento").val();
       var  empresa = $("#empresa").val();
+      var  telefono = $("#telefono").val();
 
     localStorage.setItem("nombre_completo", nombre_completo);
         localStorage.setItem("departamento", departamento);
         localStorage.setItem("empresa", empresa);
+        localStorage.setItem("Telefono", telefono);
 
 $(location).attr('href','configuracion.html');
 
